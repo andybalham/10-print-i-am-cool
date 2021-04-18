@@ -44,4 +44,4 @@ We can now express ourselves more cleanly and - hey - maybe add some comments if
 
 ![Definition in YAML](https://cdn.hashnode.com/res/hashnode/image/upload/v1618170534315/dwAS_VWkW.png "Definition in YAML")
 
-For my investigations into the toolkit, I have created a working project that emulates a basic loan processing flow. This complete code for this can be found on GitHub [here](https://github.com/andybalham/blog-step-functions-aws-toolkit). My next challenge is to take this project and convert it to use the [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/), and see how that compares with the [SAM](https://aws.amazon.com/serverless/sam/) approach.
+For my investigations into the toolkit, I have created a working project that emulates a basic loan processing flow. This complete code for this can be found on GitHub [here](https://github.com/andybalham/blog-source-code/tree/master/step-functions-aws-toolkit). My next challenge is to take this project and convert it to use the [AWS Cloud Development Kit (CDK)](https://aws.amazon.com/cdk/), and see how that compares with the [SAM](https://aws.amazon.com/serverless/sam/) approach.
