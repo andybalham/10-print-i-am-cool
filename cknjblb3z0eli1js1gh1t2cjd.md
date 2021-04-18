@@ -8,9 +8,7 @@ This post assumes that you have some familiarity with the CDK. If you are not, t
 
 _"An AWS CDK app is an application written in TypeScript, JavaScript, Python, Java, or C# that uses the AWS CDK to define AWS infrastructure. An app defines one or more stacks. Stacks (equivalent to AWS CloudFormation stacks) contain constructs, each of which defines one or more concrete AWS resources, such as Amazon S3 buckets, Lambda functions, Amazon DynamoDB tables, and so on."_
 
-For this post I took a copy of the original SAM-based [repo](https://github.com/andybalham/blog-step-functions-aws-toolkit), and then amended it to use CDK. Please refer to the repo below for the full code.
-
-%[https://github.com/andybalham/blog-step-functions-cdk]
+For this post I took a copy of the original SAM-based [repo](https://github.com/andybalham/blog-source-code/tree/master/step-functions-aws-toolkit), and then amended it to use CDK. The result can be found  [here](https://github.com/andybalham/blog-source-code/tree/master/step-functions-cdk). 
 
 Step functions in CDK require references to the functions they invoke. In the demo project all the functions are in the same file and follow a naming convention. This enabled me to create the following method in the `Stack` class:
 
