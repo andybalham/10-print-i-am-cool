@@ -95,8 +95,8 @@ const definition = new StateMachineBuilder()
   })
 
   .choice('Choice3', {
-    choices: [{ when: sfn.Condition.booleanEquals('$.var3', true), next: 'Choice3' }],
-    otherwise: 'Choice4',
+    choices: [{ when: sfn.Condition.booleanEquals('$.var3', true), next: 'State3' }],
+    otherwise: 'State4',
   })
 
   .perform(state1)
