@@ -348,3 +348,5 @@ Whilst the definition is considerably lengthier than the CDK version, I felt tha
 At this point, I had an alternative way of defining state machines in CDK. At least in theory. It is more verbose, that is for sure, but - IMHO - it is more readable, more maintainable, and plays nicer with [Prettier](https://prettier.io/). This API was developed with the implementation in mind, but without committing to one. This allowed me to iterate very quickly over different ways of expressing the problem with code, until I found one that I felt was as good as I could make it.
 
 In the next post, we shall see how I get on with implementing the theory.
+
+Edit: The resulting `StateMachineBuilder` component is now available on [npm](https://www.npmjs.com/package/@andybalham/state-machine-builder).
