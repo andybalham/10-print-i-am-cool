@@ -4,6 +4,8 @@ In [Part 1](https://www.10printiamcool.com/designing-a-cdk-state-machine-builder
 
 All the code for this post can be found in this [GitHub repo](https://github.com/andybalham/blog-source-code/tree/master/api-design-part-2).
 
+Edit: The resulting code is now available as an [npm package](https://www.npmjs.com/package/@andybalham/state-machine-builder).
+
 One question I always ask myself before writing any code is how am I going to test it. That is, how can I have any confidence that the code is running as I expect? I might not take a full-blown [Test-driven development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development) approach, but I need to have some sort of plan of how I am going to execute the code and verify the results. Ideally, this plan involves a straightforward way to both create and repeat those tests.
 
 In [Part 1](https://www.10printiamcool.com/designing-a-cdk-state-machine-builder-part-1), I created a set of examples covering different aspects of defining state machines using CDK. In [Visualising a CDK State Machine using a custom Construct](https://www.10printiamcool.com/visualising-a-cdk-state-machine-using-a-custom-construct), I created a custom construct that outputs the graph JSON for such definitions. It seemed logical to me to combine the two; use the examples as test cases and compare the graph objects from the two implementations to verify. The result is shown below.
