@@ -4,6 +4,8 @@ In my [previous post](https://www.10printiamcool.com/designing-a-cdk-state-machi
 
 The code for this post can be found in the GitHub repo [here](https://github.com/andybalham/blog-source-code/tree/master/api-design-part-2).
 
+Edit: The resulting code is now available as an  [npm package](https://www.npmjs.com/package/@andybalham/state-machine-builder).
+
 As we left in in [Part 2](https://www.10printiamcool.com/designing-a-cdk-state-machine-builder-part-2), we still had the following functionality to implement.
 
 * Map states
