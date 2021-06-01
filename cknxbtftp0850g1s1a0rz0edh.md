@@ -2,6 +2,8 @@
 
 [Previously](https://www.10printiamcool.com/converting-an-aws-step-function-to-use-cdk-part-2), I went through the process of converting a JSON-based step function using [SAM](https://aws.amazon.com/serverless/sam/), to a code-based step function using [CDK](https://aws.amazon.com/cdk/). One of the challenges I faced, was visualising the final result. My workaround was to use the [AWS Toolkit](https://aws.amazon.com/visualstudiocode/) to download the deployed definition and render that to a graph. In this post, I go through the process of create a CDK construct that allows us to have the definition generated locally.
 
+Edit: The resulting code is now available as an [npm package](https://www.npmjs.com/package/@andybalham/state-machine-with-graph).
+
 Given that CDK works by generating [CloudFormation](https://aws.amazon.com/cloudformation/), it stood to reason that the CDK must have functionality to render the state machine definitions to a format that could be rendered by the AWS Toolkit. A search of the documentation revealed that the [`StateGraph`](https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-stepfunctions.StateGraph.html) class has a `toGraphJson` method which promises to:
 
 > Return the Amazon States Language JSON for this graph.
