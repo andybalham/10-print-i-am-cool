@@ -5,6 +5,8 @@ In my previous [previous post](https://www.10printiamcool.com/visualising-a-cdk-
 
 The code for this post can be found on GitHub [here](https://github.com/andybalham/blog-source-code/tree/master/api-design-part-1).
 
+Edit: The resulting code is now available as an  [npm package](https://www.npmjs.com/package/@andybalham/state-machine-builder).
+
 My main criticism of the CDK approach is as follows:
 
 1. Readability
