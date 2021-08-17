@@ -92,6 +92,6 @@ As these rules could be complex, it was imperative to be able to understand what
 
 IMHO logging should be treated as an integral part of any system you are developing. Ad-hoc logging, or logging as an afterthought, will probably not be half as useful as a support-focussed, context-laden, consistent approach.
 
-I should also mention structured logging here, as it is the way forward where it is available. Better people than me have written about it, so here is a guide to [What Is Structured Logging and Why Developers Need It](https://stackify.com/what-is-structured-logging-and-why-developers-need-it/).
+I should also mention structured logging here, as it is the way forward where it is available. Better people than me have written about it, so here is a guide to [What Is Structured Logging and Why Developers Need It](https://stackify.com/what-is-structured-logging-and-why-developers-need-it/). Log aggregation deserves a mention as well. Having all your logs together in one place makes all the difference. Coupled with structured logging, the results can be transformative.
 
 Happy and fruitful logging!
