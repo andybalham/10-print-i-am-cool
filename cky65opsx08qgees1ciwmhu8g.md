@@ -4,7 +4,7 @@ AWS recently introduced functionality to apply EventBridge-style filtering on La
 
 The full code for this post can be found on my [GitHub repo](https://github.com/andybalham/blog-source-code/tree/master/lambda-event-filtering).
 
-## TL:DR
+## TL;DR
 
 * There is no first-class support for event source filtering in CDK currently
 * You can add event source filtering by manipulating the CloudFormation directly
