@@ -1,4 +1,13 @@
-# Enterprise Integration Patterns with Serverless and CDK
+---
+title: "Enterprise Integration Patterns with Serverless and CDK"
+datePublished: Tue Dec 06 2022 18:46:09 GMT+0000 (Coordinated Universal Time)
+cuid: clbcko9bn000408l64yb9bof7
+slug: enterprise-integration-patterns-with-serverless-and-cdk
+canonical: https://aws.hashnode.com/enterprise-integration-patterns-with-serverless-and-cdk
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1670352173440/V_Rwtnv0t.jpeg
+tags: aws, aws-lambda, aws-cdk, event-driven-architecture
+
+---
 
 If you are interested in [Event-Driven Architecture (EDA)](https://aws.amazon.com/event-driven-architecture/) then I would highly recommend you reading [Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions](https://www.amazon.co.uk/Enterprise-Integration-Patterns-Designing-Addison-Wesley/dp/0321200683). Although published first in 2003, this book contains a catalogue of sixty-five messaging patterns still relevant today. Maybe even more so, given the ease of building with such patterns today. It also explores in detail the advantages and limitations of asynchronous messaging architectures.
 
@@ -26,7 +35,7 @@ Next we will consider a couple of alternative implementations using AWS serverle
 
 [SQS](https://aws.amazon.com/sqs/) and [SNS](https://aws.amazon.com/sns/) are two complimentary messaging services that together can be used to create complex event-driven architectures. 
 
-SNS is a point-to-point messaging technology and SQS a publish-and-subscribe event technology. These feel a natural fit to implement the patterns above. With SQS providing the queues and SNS providing the fan-out to the lenders. This is shown in the diagram below which is a close replication of the original Loan Broker application diagram.
+SQS is a point-to-point messaging technology and SNS a publish-and-subscribe event technology. These feel a natural fit to implement the patterns above. With SQS providing the queues and SNS providing the fan-out to the lenders. This is shown in the diagram below which is a close replication of the original Loan Broker application diagram.
 
 ![Architecture diagram using SQS and SNS](https://github.com/andybalham/blog-source-code/blob/master/blog-posts/images/ent-int-patterns-with-serverless-and-cdk/case-study-sns-sqs.png?raw=true)
 
