@@ -10,6 +10,8 @@ tags: programming-blogs, typescript, programming-languages, programming-tips
 
 For the majority of my journey in software development, I have used languages that have supported method overloading. I have found this to be useful, so I have been wondering how to implement something similar in [TypeScript](https://www.typescriptlang.org/). How can we have a method can be declared multiple times with different parameters in a language which does not support method overloading in the traditional way?
 
+> After posting, it was brought to my attention that there is another way. I have added an update at the end to cover this approach.
+
 ## The Problem
 
 I wanted to create a class to build queries for [DynamoDB](https://aws.amazon.com/dynamodb/). DynamoDB is a NoSQL database that indexes each item by two keys. A partition key and a sort key. When querying a DynamoDB table you always supply a partition key, and you optionally supply a sort key along with an operator such as 'greater than'. Another option is to supply two sort key values to provide a range.
@@ -32,24 +34,28 @@ enum SortKeyOperator
 class QueryBuilder
 {
     public void Build(string partitionKeyValue)
-    {...}
+    {
+    }
 
     public void Build(
         string partitionKeyValue,
         string sortKeyValue)
-    {...}
+    {
+    }
 
     public void Build(
         string partitionKeyValue,
         SortKeyOperator sortKeyOperator,
         string sortKeyValue)
-    {...}
+    {
+    }
 
     public void Build(
         string partitionKeyValue,
         string sortKeyFromValue,
         string sortKeyToValue)
-    {...}
+    {
+    }
 }
 ```
 
@@ -253,7 +259,7 @@ One downside to using deconstructed parameters is that I could not find a way to
  * Builds a query based on the key criteria supplied.
  * @param param0 Key criteria
  */
-build({ partitionKeyValue, sortKeyCriteria }: {...}) {...}    
+build({ partitionKeyValue, sortKeyCriteria }: {...}) {...}
 ```
 
 This resulted in the following prompt in VS Code, which does give some indication of the options via the `type` values.
@@ -271,3 +277,76 @@ Here we can see that the individual parameters can be documented in the same way
 ## Summary
 
 In this post we looked at various ways that we can implement some form of method overloading in TypeScript and compared these with an equivalent in C#. My feeling is that for internal libraries, I would favour the discriminated type approach. However, for external libraries, I feel that the ability to fully document means that the simple, multi-named approach would be better. Behind the scenes, these methods may map onto a single discriminated type method, in order to keep functionality together.
+
+## Update
+
+After posting this, it was pointed out to me that there is another way that we can implement method overloading in TypeScript.
+
+The way we can do it is by defining an `args` parameter with the [JavaScript spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) and a list of possible parameters. In our example this would be the following:
+
+```TypeScript
+build(
+  ...args:
+    | [partitionKeyValue: string]
+    | [partitionKeyValue: string, sortKeyValue: string]
+    | [
+        partitionKeyValue: string,
+        sortKeyOperator: NumericSortKeyOperator,
+        sortKeyValue: string
+      ]
+    | [
+        partitionKeyValue: string,
+        sortKeyFromValue: string,
+        sortKeyToValue: string
+      ]
+) {...}
+```
+
+In VS Code, this gives an experience very similar to that we had for C#:
+
+![VS Code showing the list of overloaded methods](https://github.com/andybalham/blog-source-code/blob/master/blog-posts/images/creating-overloaded-methods-in-typescript/arg-list-overload-dropdown.png?raw=true)
+
+We still have the problem of how to know which overload is being called. I solved this by building up a signature string from the arguments types and switching on the result.
+
+```TypeScript
+const signature = args
+  .map((arg) => typeof arg)
+  .reduce((accumulator, argType) => `${accumulator}${argType}|`, '|');
+
+switch (signature) {
+  case '|string|':
+    // Handle case where we match by partition key only
+    break;
+  case '|string|string|':
+    // Handle case where we match by compound key
+    break;
+  case '|string|string|string|':
+    // Handle case where we match by range
+    break;
+  case '|string|number|string|':
+    // Handle case where we match by comparison
+    break;
+  default:
+    throw new Error(`Unhandled signature`);
+}
+```
+
+One thing I did have to change was the type of `enum`. Originally, it was a set of strings, but this would cause a clash of signatures. I changed it for a set of integers and this avoided the issue.
+
+I used array destructuring to access the values as follows:
+
+```TypeScript
+case '|string|number|string|':
+  // Handle case where we match by comparison
+  {
+    const [partitionKeyValue, sortKeyOperator, sortKeyValue] = args;
+    // Call the method implementation
+  }
+  break;
+```
+
+Whilst TypeScript does infer the types, it does not discriminate. So it can only assert that some values are one of a set:
+
+![VS Code showing the inferred types](https://github.com/andybalham/blog-source-code/blob/master/blog-posts/images/creating-overloaded-methods-in-typescript/arg-list-inferred-typing.png?raw=true)
+
+This approach suffers from the documentation issue that other advanced approaches do. My feeling overall is that, although it gives a similar intellisense experience, it falls down when implementing the underlying functionality and I would still be tempted to go down the explicit naming route with discriminated types underneath.
