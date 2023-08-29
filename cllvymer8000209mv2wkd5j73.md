@@ -1,8 +1,8 @@
 ---
-title: "Adventures with X-Ray Part 2"
+title: "Adventures with AWS X-Ray and CDK - Part 2"
 datePublished: Tue Aug 29 2023 07:01:19 GMT+0000 (Coordinated Universal Time)
 cuid: cllvymer8000209mv2wkd5j73
-slug: adventures-with-x-ray-part-2
+slug: adventures-with-aws-x-ray-and-cdk-part-2
 cover: https://cdn.hashnode.com/res/hashnode/image/stock/unsplash/UN4PadDppAU/upload/ec2665e7fe93c6c35898b182d1d93239.jpeg
 tags: aws, cdk, xray, stepfunction
 
