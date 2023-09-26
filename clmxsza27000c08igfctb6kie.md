@@ -1,8 +1,8 @@
 ---
-title: "Adventures with X-Ray Part 3"
+title: "Adventures with AWS X-Ray and CDK - Part 3"
 datePublished: Sun Sep 24 2023 18:38:36 GMT+0000 (Coordinated Universal Time)
 cuid: clmxsza27000c08igfctb6kie
-slug: adventures-with-x-ray-part-3
+slug: adventures-with-aws-x-ray-and-cdk-part-3
 cover: https://cdn.hashnode.com/res/hashnode/image/stock/unsplash/Q1p7bh3SHj8/upload/8fb6a0249fde7235fb7249a66d12472d.jpeg
 tags: lambda, aws, aws-x-ray, stepfunction, eventbridge
 
